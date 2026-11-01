@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Світ комп'ютерів</title>
+<style>
+:root {
+  --site-primary: #1746a2;
+  --site-secondary: #dce9ff;
+  --site-background: #f4f7fc;
+  --site-on-primary: #ffffff;
+  --site-on-secondary: #17315f;
+  --site-on-background: #17243b;
+  --site-font-body: Arial, Helvetica, sans-serif;
+  --site-font-heading: Arial, Helvetica, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); color: var(--site-on-background); background: var(--site-background); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: light-dark(var(--site-background), #111827); color: light-dark(var(--site-on-background), #edf2ff); }
+.layout { display:grid; grid-template-columns:250px minmax(0,1fr); min-height:100vh; }
+.sidebar { background:light-dark(#e5edfb,#17243a); border-right:1px solid light-dark(#d3def0,#34445e); padding:28px 16px; position:sticky; top:0; height:100vh; overflow:auto; }
+.side-title { font-size:13px; font-weight:800; letter-spacing:1.4px; color:light-dark(#53627a,#a9bad4); padding:0 12px 16px; }
+.side-nav { display:grid; gap:7px; }
+.side-nav a { display:block; text-decoration:none; color:light-dark(#263b5c,#e4ecfa); padding:12px 14px; border-radius:10px; font-weight:650; font-size:14px; }
+.side-nav a:hover,.side-nav a.active { background:var(--site-primary); color:white; }
+.content { min-width:0; }
+.page-section { scroll-margin-top:20px; margin-bottom:52px; }
+.page-section h2 { font-size:calc(28px * var(--site-heading-scale)); }
+.page-section p,.page-section li { line-height:1.75; }
+.info-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.info-card { background:light-dark(#fff,#1f2937); border:1px solid light-dark(#e0e7f2,#374151); border-radius:14px; padding:20px; }
+.info-card h3 { margin-top:0; }
+@media(max-width:760px) { .layout {grid-template-columns:1fr;} .sidebar {position:relative;height:auto;padding:16px;} .side-nav {display:flex;overflow-x:auto;padding-bottom:5px;} .side-nav a {white-space:nowrap;} .info-grid {grid-template-columns:1fr;} }
+header { background: var(--site-primary); color: var(--site-on-primary); padding: calc(42px * var(--site-spacing-scale)) 7%; }
+nav { display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; max-width:1100px; margin:auto; }
+.logo { font-weight:800; letter-spacing:.4px; font-size:20px; }
+nav a { color:inherit; text-decoration:none; margin-left:18px; font-size:14px; }
+.hero { max-width:1100px; margin:50px auto 15px; }
+.eyebrow { text-transform:uppercase; letter-spacing:2px; font-size:12px; opacity:.8; }
+h1 { font:800 calc( clamp(2.3rem, 6vw, 4.5rem) * var(--site-heading-scale))/1.04 var(--site-font-heading); max-width:760px; margin:14px 0; }
+.hero p { max-width:620px; font-size:18px; line-height:1.65; opacity:.9; }
+main { max-width:1100px; margin:auto; padding: calc(48px * var(--site-spacing-scale)) 24px; }
+.section-title { font-size:calc(28px * var(--site-heading-scale)); margin:0 0 12px; }
+.intro { line-height:1.7; max-width:780px; margin-bottom:28px; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.card { background:light-dark(#ffffff,#1f2937); border:1px solid light-dark(#e0e7f2,#374151); border-radius:calc(18px * var(--site-radius-scale)); padding:24px; box-shadow:0 8px 24px #1b376010; }
+.card .emoji { font-size:35px; }
+.card h3 { margin:13px 0 8px; }
+.card p { line-height:1.6; margin:0; color:light-dark(#53627a,#c5d0e0); }
+.feature { display:grid; grid-template-columns:1fr 1fr; gap:25px; align-items:center; margin-top:55px; }
+.feature-panel { background:var(--site-secondary); color:var(--site-on-secondary); padding:30px; border-radius:calc(20px * var(--site-radius-scale)); }
+.feature-panel ul { padding-left:20px; line-height:2; }
+.tip { background:var(--site-primary); color:var(--site-on-primary); border-radius:calc(18px * var(--site-radius-scale)); padding:28px; }
+.tip p { line-height:1.7; }
+footer { background:light-dark(#e7edf7,#0b1220); padding:25px; text-align:center; font-size:13px; color:light-dark(#53627a,#b8c5d9); }
+button { background:var(--site-primary); color:white; border:0; padding:12px 18px; border-radius:10px; font-weight:700; cursor:pointer; margin-top:10px; }
+button:focus-visible,a:focus-visible { outline:3px solid #f5b942; outline-offset:3px; }
+@media(max-width:760px) { .grid {grid-template-columns:1fr;} .feature {grid-template-columns:1fr;} nav a {margin:0 10px 0 0;} .hero {margin-top:35px;} }
+</style>
+</head>
+<body>
+<div id="app">
+<div class="layout">
+<aside class="sidebar"><div class="logo" style="padding:0 12px 28px">⌘ КОМП’ЮТЕРИ</div><div class="side-title">НАВІГАЦІЯ</div><nav class="side-nav" aria-label="Розділи сайту"><a class="active" href="#home">🏠 Головна</a><a href="#about">💡 Що таке комп’ютер</a><a href="#types">🖥️ Види комп’ютерів</a><a href="#parts">⚙️ Складові ПК</a><a href="#hardware">🧩 Пристрої та периферія</a><a href="#software">💿 Програмне забезпечення</a><a href="#history">📜 Історія комп’ютерів</a><a href="#internet">🌐 Інтернет</a><a href="#security">🔒 Безпека</a><a href="#care">🪑 Правила роботи</a><a href="#glossary">📖 Словник термінів</a></nav></aside>
+<div class="content"><header id="home">
+  <div class="hero"><div class="eyebrow">Технології навколо нас</div><h1>Відкрий для себе світ комп’ютерів</h1><p>Навчальний довідник про комп’ютерну техніку, програми, інтернет та цифрову безпеку. Обирай розділ у меню зліва.</p></div>
+</header>
+<main>
+<section id="about"><h2 class="section-title">Що таке комп’ютер?</h2><p class="intro">Комп’ютер отримує, опрацьовує, зберігає та передає інформацію. Він виконує команди програм і може розв’язувати найрізноманітніші завдання — від простих обчислень до створення відео та моделювання.</p></section>
+<section id="types"><h2 class="section-title">Основні види комп’ютерів</h2><p class="intro">Комп’ютери бувають різними за розміром, потужністю та призначенням.</p>
+<div class="grid">
+<article class="card"><div class="emoji">🖥️</div><h3>Настільний ПК</h3><p>Складається з окремих пристроїв. Зручний для навчання, роботи, ігор і складних завдань.</p></article>
+<article class="card"><div class="emoji">💻</div><h3>Ноутбук</h3><p>Портативний комп’ютер з екраном і клавіатурою. Його легко брати із собою.</p></article>
+<article class="card"><div class="emoji">📱</div><h3>Планшет</h3><p>Компактний пристрій із сенсорним екраном для читання, навчання та розваг.</p></article>
+</div></section>
+<section id="parts" class="feature">
+<div><h2 class="section-title">З чого складається комп’ютер?</h2><p class="intro">Кожна складова виконує свою важливу функцію. Разом вони забезпечують роботу всієї системи.</p><button id="showTip">Показати цікавинку</button><p id="tipText" aria-live="polite"></p></div>
+<div class="feature-panel"><h3>Основні складові</h3><ul><li><b>Процесор</b> — виконує обчислення та команди.</li><li><b>Оперативна пам’ять</b> — тимчасово зберігає дані під час роботи.</li><li><b>Накопичувач</b> — зберігає файли та програми.</li><li><b>Материнська плата</b> — з’єднує компоненти.</li><li><b>Монітор, клавіатура, миша</b> — допомагають взаємодіяти з ПК.</li></ul></div>
+</section>
+<section id="hardware" class="page-section"><h2>Пристрої та периферія</h2><p>Периферійні пристрої допомагають вводити, виводити та передавати інформацію.</p><div class="info-grid"><article class="info-card"><h3>Пристрої введення</h3><p>Клавіатура вводить текст і команди, миша керує вказівником, мікрофон записує звук, сканер переводить паперові зображення в цифровий формат.</p></article><article class="info-card"><h3>Пристрої виведення</h3><p>Монітор показує зображення, принтер друкує документи, колонки та навушники відтворюють звук, проєктор виводить зображення на великий екран.</p></article><article class="info-card"><h3>Порти та підключення</h3><p>USB використовують для флешок та аксесуарів, HDMI передає відео й звук, аудіороз’єм підключає навушники, Wi-Fi забезпечує бездротову мережу.</p></article><article class="info-card"><h3>Накопичувачі</h3><p>HDD зберігає дані на магнітних дисках, SSD працює на флеш-пам’яті й зазвичай швидше завантажує систему та програми.</p></article></div></section>
+<section id="software" class="page-section"><h2>Програмне забезпечення</h2><p>Програмне забезпечення — це програми та інструкції, за допомогою яких комп’ютер виконує завдання.</p><div class="info-grid"><article class="info-card"><h3>Операційна система</h3><p>Windows, macOS та Linux керують роботою пристроїв, файлами, програмами й обліковими записами.</p></article><article class="info-card"><h3>Прикладні програми</h3><p>Текстові редактори, таблиці, браузери, графічні редактори та програми для відеозв’язку допомагають виконувати конкретні завдання.</p></article><article class="info-card"><h3>Файли й папки</h3><p>Файл містить інформацію, а папки допомагають упорядковувати файли. Для зручності використовуй зрозумілі назви та резервні копії.</p></article><article class="info-card"><h3>Оновлення</h3><p>Оновлення виправляють помилки, додають можливості та закривають виявлені вразливості. Встановлюй їх із надійних джерел.</p></article></div></section>
+<section id="history" class="page-section"><h2>Коротка історія комп’ютерів</h2><ul><li><b>Механічні обчислення:</b> задовго до електроніки люди створювали пристрої для рахування.</li><li><b>Перші електронні комп’ютери:</b> були дуже великими, споживали багато електроенергії та використовувалися для складних обчислень.</li><li><b>Персональні комп’ютери:</b> зменшення розмірів компонентів зробило комп’ютери доступними для домівок, шкіл та офісів.</li><li><b>Сучасність:</b> ноутбуки, смартфони, хмарні сервіси та штучний інтелект стали частиною повсякденного життя.</li></ul></section>
+<section id="internet" class="page-section"><h2>Інтернет і мережі</h2><p>Інтернет — це глобальна мережа, що з’єднує пристрої та дозволяє обмінюватися інформацією. Вебсайти відкриваються у браузері, електронна пошта допомагає надсилати повідомлення, а хмарні сервіси дають змогу зберігати файли онлайн.</p><div class="info-grid"><article class="info-card"><h3>Браузер</h3><p>Програма для перегляду вебсторінок. Приклади: Chrome, Firefox, Edge, Safari та Opera.</p></article><article class="info-card"><h3>Пошукова система</h3><p>Допомагає знаходити сторінки та матеріали за ключовими словами. Перевіряй автора, дату й надійність джерела.</p></article></div></section>
+<section id="security" class="page-section"><h2>Цифрова безпека</h2><ul><li>Створюй довгі унікальні паролі для різних сайтів.</li><li>Увімкни двофакторну автентифікацію, де це можливо.</li><li>Не відкривай підозрілі вкладення та посилання.</li><li>Не повідомляй незнайомцям паролі, коди підтвердження та особисті дані.</li><li>Завантажуй програми з офіційних або перевірених джерел.</li><li>Роби резервні копії важливих файлів.</li></ul></section>
+<section id="care" class="page-section"><h2>Правила правильної роботи за комп’ютером</h2><p>Сиди так, щоб спина мала опору, а стопи стояли на підлозі. Розташовуй верхню частину монітора приблизно на рівні очей і не піднось екран надто близько. Регулярно роби перерви, змінюй положення тіла та давай очам відпочити. Тримай напої подалі від техніки й не торкайся кабелів мокрими руками.</p></section>
+<section id="glossary" class="page-section"><h2>Словник комп’ютерних термінів</h2><div class="info-grid"><article class="info-card"><h3>Процесор (CPU)</h3><p>Основний обчислювальний пристрій, який виконує команди програм.</p></article><article class="info-card"><h3>Оперативна пам’ять (RAM)</h3><p>Швидка тимчасова пам’ять для даних, які потрібні програмам зараз.</p></article><article class="info-card"><h3>Відеокарта (GPU)</h3><p>Компонент для обробки графіки, відео та паралельних обчислень.</p></article><article class="info-card"><h3>Материнська плата</h3><p>Плата, до якої під’єднуються основні компоненти комп’ютера.</p></article><article class="info-card"><h3>Операційна система</h3><p>Набір програм, що керує ресурсами комп’ютера та забезпечує роботу застосунків.</p></article><article class="info-card"><h3>Хмарне сховище</h3><p>Онлайн-сервіс для зберігання файлів на віддалених серверах.</p></article></div></section>
+<section id="security-tip" class="tip" style="margin-top:30px"><h2>Пам’ятай!</h2><p>Комп’ютер — корисний інструмент для навчання, творчості та спілкування. Використовуй його розумно, перевіряй інформацію та дбай про власну безпеку.</p></section>
+</main>
+<footer>Навчальний сайт «Світ комп’ютерів» · Довідник з комп’ютерної грамотності</footer></div></div>
+</div>
+<script>
+const button = document.getElementById('showTip');
+const output = document.getElementById('tipText');
+button.addEventListener('click', () => {
+  output.textContent = 'Перші електронні комп’ютери займали цілі кімнати, а сучасний смартфон має значно більші можливості.';
+  button.textContent = 'Цікавий факт показано';
+});
+const links = document.querySelectorAll('.side-nav a');
+links.forEach(link => link.addEventListener('click', () => {
+  links.forEach(item => item.classList.remove('active'));
+  link.classList.add('active');
+}));
+</script>
+</body>
+</html>
